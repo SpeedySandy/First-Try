@@ -2097,6 +2097,73 @@
     }
     .gps-btn:hover, .gps-btn:focus { background: var(--gold); color: var(--bg); }
 
+    .gps-edit-btn {
+      display: block;
+      width: 100%;
+      margin-top: 10px;
+      padding: 12px;
+      background: transparent;
+      border: 1px dashed var(--border);
+      border-radius: 13px;
+      color: var(--muted);
+      font-size: 13px;
+      cursor: pointer;
+      text-align: center;
+      transition: border-color 0.15s, color 0.15s;
+    }
+    .gps-edit-btn:hover { border-color: var(--gold); color: var(--gold); }
+    .gps-edit-panel {
+      margin-top: 12px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 17px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .gps-edit-panel[hidden] { display: none; }
+    .gps-edit-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--muted);
+      margin-bottom: 2px;
+    }
+    .gps-edit-input {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 10px 12px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      color: var(--text);
+      font-size: 15px;
+    }
+    .gps-edit-input:focus { outline: none; border-color: var(--gold); }
+    .gps-edit-actions { display: flex; gap: 10px; margin-top: 4px; }
+    .gps-edit-save {
+      flex: 1;
+      padding: 12px;
+      background: var(--gold);
+      color: var(--bg);
+      border: none;
+      border-radius: 12px;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .gps-edit-cancel {
+      flex: 1;
+      padding: 12px;
+      background: transparent;
+      color: var(--muted);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
     .meeting-card {
       background: var(--surface);
       border: 1px solid var(--border);
@@ -3158,6 +3225,19 @@ The programme is carried by dozens of crews and bars from across Europe. Each ba
           <a class="gps-btn" data-gps="apple" href="#" target="_blank" rel="noopener noreferrer" data-i18n="camp_gps_open_apple">Open in Apple Maps</a>
           <a class="gps-btn" data-gps="w3w" href="#" target="_blank" rel="noopener noreferrer" data-i18n="camp_gps_open_w3w">Open in what3words</a>
         </div>
+        <button class="gps-edit-btn" id="gps-edit-open" data-i18n="camp_gps_edit">✏️ Edit location</button>
+        <div class="gps-edit-panel" id="gps-edit-panel" hidden>
+          <label class="gps-edit-label" data-i18n="camp_gps_lat_label">Latitude</label>
+          <input class="gps-edit-input" id="gps-edit-lat" type="number" step="any" inputmode="decimal" placeholder="53.3180">
+          <label class="gps-edit-label" data-i18n="camp_gps_lon_label">Longitude</label>
+          <input class="gps-edit-input" id="gps-edit-lon" type="number" step="any" inputmode="decimal" placeholder="12.7520">
+          <label class="gps-edit-label" data-i18n="camp_gps_w3w_label">what3words (without ///)</label>
+          <input class="gps-edit-input" id="gps-edit-w3w" type="text" inputmode="text" placeholder="inhibition.deviance.joshing">
+          <div class="gps-edit-actions">
+            <button class="gps-edit-save" id="gps-edit-save" data-i18n="camp_gps_save">Save</button>
+            <button class="gps-edit-cancel" id="gps-edit-cancel" data-i18n="camp_gps_cancel">Cancel</button>
+          </div>
+        </div>
       </div>
 
       <img class="tab-footer-art" src="assets/Fusion25_Turmbuhne_nacht_Medium.png" alt="" loading="lazy">
@@ -3529,7 +3609,13 @@ The programme is carried by dozens of crews and bars from across Europe. Each ba
         camp_gps_w3w: "what3words address",
         camp_gps_open_google: "Open in Google Maps",
         camp_gps_open_apple: "Open in Apple Maps",
-        camp_gps_open_w3w: "Open in what3words"
+        camp_gps_open_w3w: "Open in what3words",
+        camp_gps_edit: "✏️ Edit location",
+        camp_gps_lat_label: "Latitude",
+        camp_gps_lon_label: "Longitude",
+        camp_gps_w3w_label: "what3words (without ///)",
+        camp_gps_save: "Save",
+        camp_gps_cancel: "Cancel"
       },
       es: {
         nav_home: "Inicio",
@@ -3780,7 +3866,13 @@ The programme is carried by dozens of crews and bars from across Europe. Each ba
         camp_gps_w3w: "Dirección what3words",
         camp_gps_open_google: "Abrir en Google Maps",
         camp_gps_open_apple: "Abrir en Apple Maps",
-        camp_gps_open_w3w: "Abrir en what3words"
+        camp_gps_open_w3w: "Abrir en what3words",
+        camp_gps_edit: "✏️ Editar ubicación",
+        camp_gps_lat_label: "Latitud",
+        camp_gps_lon_label: "Longitud",
+        camp_gps_w3w_label: "what3words (sin ///)",
+        camp_gps_save: "Guardar",
+        camp_gps_cancel: "Cancelar"
       },
       de: {
         nav_home: "Start",
@@ -4031,7 +4123,13 @@ The programme is carried by dozens of crews and bars from across Europe. Each ba
         camp_gps_w3w: "what3words-Adresse",
         camp_gps_open_google: "In Google Maps öffnen",
         camp_gps_open_apple: "In Apple Maps öffnen",
-        camp_gps_open_w3w: "In what3words öffnen"
+        camp_gps_open_w3w: "In what3words öffnen",
+        camp_gps_edit: "✏️ Standort bearbeiten",
+        camp_gps_lat_label: "Breitengrad",
+        camp_gps_lon_label: "Längengrad",
+        camp_gps_w3w_label: "what3words (ohne ///)",
+        camp_gps_save: "Speichern",
+        camp_gps_cancel: "Abbrechen"
       }
     };
 
@@ -4570,7 +4668,8 @@ The programme is carried by dozens of crews and bars from across Europe. Each ba
       budget_members:  'fusion_budget_members',
       budget_expenses: 'fusion_budget_expenses',
       budget_settled:  'fusion_budget_settled',
-      meetups:         'fusion_camp_schedule'
+      meetups:         'fusion_camp_schedule',
+      gps:             'fusion_gps'
     };
     const CLOUD_LS_TO_NS = Object.fromEntries(
       Object.entries(CLOUD_NAMESPACES).map(([k, v]) => [v, k])
@@ -4660,6 +4759,9 @@ The programme is carried by dozens of crews and bars from across Europe. Each ba
         }
         if (touched.has('meetups') && typeof renderSchedule === 'function') {
           renderSchedule();
+        }
+        if (touched.has('gps') && typeof renderGPS === 'function') {
+          renderGPS();
         }
       } finally {
         cloudHydrateInFlight = false;
@@ -4992,18 +5094,72 @@ The programme is carried by dozens of crews and bars from across Europe. Each ba
 
     // Stage 5 — Budget, Equipment, GPS
 
-    const CAMP_LAT = 53.3180;
-    const CAMP_LON = 12.7520;
-    const CAMP_W3W = 'inhibition.deviance.joshing';
+    const GPS_KEY = 'fusion_gps';
+    const GPS_DEFAULTS = { lat: 53.3180, lon: 12.7520, w3w: 'inhibition.deviance.joshing' };
 
-    document.getElementById('gps-coords').textContent = CAMP_LAT.toFixed(4) + ', ' + CAMP_LON.toFixed(4);
-    document.getElementById('gps-w3w').textContent = '///' + CAMP_W3W;
-    const googleMapsHref = 'https://maps.google.com/?q=' + CAMP_LAT + ',' + CAMP_LON;
-    const appleMapsHref = 'https://maps.apple.com/?q=' + CAMP_LAT + ',' + CAMP_LON;
-    const w3wHref = 'https://what3words.com/' + CAMP_W3W;
-    document.querySelectorAll('[data-gps="google"]').forEach(a => { a.href = googleMapsHref; });
-    document.querySelectorAll('[data-gps="apple"]').forEach(a => { a.href = appleMapsHref; });
-    document.querySelectorAll('[data-gps="w3w"]').forEach(a => { a.href = w3wHref; });
+    function loadGPS() {
+      try {
+        const raw = localStorage.getItem(GPS_KEY);
+        if (raw) {
+          const v = JSON.parse(raw);
+          if (v && typeof v.lat === 'number' && typeof v.lon === 'number') return v;
+        }
+      } catch (_) { /* noop */ }
+      return { ...GPS_DEFAULTS };
+    }
+
+    function renderGPS() {
+      const g = loadGPS();
+      document.getElementById('gps-coords').textContent = g.lat.toFixed(4) + ', ' + g.lon.toFixed(4);
+      document.getElementById('gps-w3w').textContent = '///' + (g.w3w || GPS_DEFAULTS.w3w);
+      const googleMapsHref = 'https://maps.google.com/?q=' + g.lat + ',' + g.lon;
+      const appleMapsHref = 'https://maps.apple.com/?q=' + g.lat + ',' + g.lon;
+      const w3wHref = 'https://what3words.com/' + (g.w3w || GPS_DEFAULTS.w3w);
+      document.querySelectorAll('[data-gps="google"]').forEach(a => { a.href = googleMapsHref; });
+      document.querySelectorAll('[data-gps="apple"]').forEach(a => { a.href = appleMapsHref; });
+      document.querySelectorAll('[data-gps="w3w"]').forEach(a => { a.href = w3wHref; });
+    }
+
+    renderGPS();
+
+    // GPS edit panel wiring
+    (function () {
+      const panel = document.getElementById('gps-edit-panel');
+      const openBtn = document.getElementById('gps-edit-open');
+      const saveBtn = document.getElementById('gps-edit-save');
+      const cancelBtn = document.getElementById('gps-edit-cancel');
+      const latIn = document.getElementById('gps-edit-lat');
+      const lonIn = document.getElementById('gps-edit-lon');
+      const w3wIn = document.getElementById('gps-edit-w3w');
+
+      openBtn.addEventListener('click', function () {
+        const g = loadGPS();
+        latIn.value = g.lat;
+        lonIn.value = g.lon;
+        w3wIn.value = g.w3w || GPS_DEFAULTS.w3w;
+        panel.hidden = false;
+        openBtn.hidden = true;
+        latIn.focus();
+      });
+
+      cancelBtn.addEventListener('click', function () {
+        panel.hidden = true;
+        openBtn.hidden = false;
+      });
+
+      saveBtn.addEventListener('click', function () {
+        const lat = parseFloat(latIn.value);
+        const lon = parseFloat(lonIn.value);
+        const w3w = w3wIn.value.trim().replace(/^\/+/, '');
+        if (isNaN(lat) || isNaN(lon)) { latIn.focus(); return; }
+        const g = { lat, lon, w3w: w3w || GPS_DEFAULTS.w3w };
+        try { localStorage.setItem(GPS_KEY, JSON.stringify(g)); } catch (_) { /* noop */ }
+        cloudMirror(GPS_KEY, g);
+        renderGPS();
+        panel.hidden = true;
+        openBtn.hidden = false;
+      });
+    }());
 
     // ==================== Budget Tracker v2 (Part A: foundation) ====================
     // Scope of this PR: editable members list, 5-field add-expense form, expense

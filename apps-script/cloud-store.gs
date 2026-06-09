@@ -15,7 +15,7 @@
  *   POST { key, value }       → { ok: true }
  *
  * The Fusion app uses namespaces:
- *   equipment, budget_members, budget_expenses, budget_settled, meetups
+ *   equipment, budget_members, budget_expenses, budget_settled, meetups, gps
  *
  * Notes on CORS: Apps Script Web Apps work cross-origin for simple
  * requests. The app sends POST bodies as text/plain to avoid triggering
