@@ -2386,6 +2386,21 @@
     .sitemap-fallback p { margin: 0; }
     .sitemap-open { margin-top: 10px; }
 
+    .timetable-wrap {
+      border-radius: 12px;
+      overflow: hidden;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      margin-bottom: 12px;
+    }
+    .timetable-frame {
+      display: block;
+      width: 100%;
+      height: calc(100dvh - 200px);
+      min-height: 520px;
+      border: 0;
+    }
+
     /* ===== Admin dashboard ===== */
     .admin-overlay {
       position: fixed;
@@ -3059,6 +3074,25 @@ The programme is carried by dozens of crews and bars from across Europe. Each ba
       <a class="link-btn sitemap-open" href="https://fusion-festival.de/Fusion25.pdf" target="_blank" rel="noopener noreferrer" data-i18n="map_open_official">Open Fusion 2025 map (PDF)</a>
       <img class="tab-footer-art" src="assets/Fusion25_firespace_Medium.png" alt="" loading="lazy">
     </section>
+
+    <section id="tab-timetable">
+      <h2 class="map-title" data-i18n="timetable_title">Timetable</h2>
+      <div class="timetable-wrap">
+        <iframe
+          id="official-timetable-frame"
+          class="timetable-frame"
+          src="https://timetable.fusion-festival.de/"
+          title="Fusion festival official timetable"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          allow="fullscreen"></iframe>
+        <div class="sitemap-fallback" id="timetable-fallback" hidden>
+          <p data-i18n="timetable_blocked_note">Couldn't load the embedded timetable. Open it in a new tab instead.</p>
+        </div>
+      </div>
+      <a class="link-btn sitemap-open" href="https://timetable.fusion-festival.de/" target="_blank" rel="noopener noreferrer" data-i18n="timetable_open_official">Open official Fusion timetable</a>
+    </section>
+
     <section id="tab-camp">
       <div class="tab-hero tab-hero-camp" aria-hidden="true"></div>
       <div class="accordion" data-acc>
@@ -3352,6 +3386,10 @@ The programme is carried by dozens of crews and bars from across Europe. Each ba
       <svg viewBox="0 0 24 24"><polygon points="3 6 9 4 15 6 21 4 21 18 15 20 9 18 3 20"/><line x1="9" y1="4" x2="9" y2="18"/><line x1="15" y1="6" x2="15" y2="20"/></svg>
       <span data-i18n="nav_map">Map</span>
     </button>
+    <button class="tab-btn" data-tab="tab-timetable">
+      <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="17" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+      <span data-i18n="nav_timetable">Lineup</span>
+    </button>
     <button class="tab-btn" data-tab="tab-camp">
       <svg viewBox="0 0 24 24"><path d="M3 21L12 4l9 17"/><path d="M3 21h18"/><path d="M12 4v17"/></svg>
       <span data-i18n="nav_camp">Camp</span>
@@ -3364,6 +3402,7 @@ The programme is carried by dozens of crews and bars from across Europe. Each ba
         nav_home: "Home",
         nav_info: "Info",
         nav_map: "Map",
+        nav_timetable: "Lineup",
         nav_camp: "Camp",
         app_title: "Fusion 2026",
         app_subtitle: "High Society Giraffes",
@@ -3525,6 +3564,9 @@ The programme is carried by dozens of crews and bars from across Europe. Each ba
         map_intro: "The official Fusion 2025 festival site map (PDF).",
         map_open_official: "Open Fusion 2025 map (PDF)",
         map_blocked_note: "Couldn't load the embedded map. Open it in a new tab instead.",
+        timetable_title: "Lineup & Timetable",
+        timetable_open_official: "Open official Fusion timetable",
+        timetable_blocked_note: "Couldn't load the embedded timetable. Open it in a new tab instead.",
         camp_members_title: "Camp Members",
         camp_members_total: "{count} campers",
         camp_members_load_error: "Couldn't reach the roster — showing the last version we had.",
@@ -3621,6 +3663,7 @@ The programme is carried by dozens of crews and bars from across Europe. Each ba
         nav_home: "Inicio",
         nav_info: "Info",
         nav_map: "Mapa",
+        nav_timetable: "Lineup",
         nav_camp: "Camping",
         app_title: "Fusion 2026",
         app_subtitle: "High Society Giraffes",
@@ -3782,6 +3825,9 @@ The programme is carried by dozens of crews and bars from across Europe. Each ba
         map_intro: "El plano oficial del festival Fusion 2025 (PDF).",
         map_open_official: "Abrir el plano de Fusion 2025 (PDF)",
         map_blocked_note: "No se pudo cargar el plano incrustado. Ábrelo en una pestaña nueva.",
+        timetable_title: "Lineup y horario",
+        timetable_open_official: "Abrir el horario oficial de Fusion",
+        timetable_blocked_note: "No se pudo cargar el horario incrustado. Ábrelo en una pestaña nueva.",
         camp_members_title: "Miembros del camping",
         camp_members_total: "{count} personas",
         camp_members_load_error: "No se pudo cargar la lista — mostrando la última versión guardada.",
@@ -3878,6 +3924,7 @@ The programme is carried by dozens of crews and bars from across Europe. Each ba
         nav_home: "Start",
         nav_info: "Info",
         nav_map: "Karte",
+        nav_timetable: "Lineup",
         nav_camp: "Camp",
         app_title: "Fusion 2026",
         app_subtitle: "High Society Giraffes",
@@ -4039,6 +4086,9 @@ The programme is carried by dozens of crews and bars from across Europe. Each ba
         map_intro: "Der offizielle Fusion-2025-Geländeplan (PDF).",
         map_open_official: "Fusion-2025-Karte öffnen (PDF)",
         map_blocked_note: "Eingebetteter Plan konnte nicht geladen werden. In neuem Tab öffnen.",
+        timetable_title: "Lineup & Programm",
+        timetable_open_official: "Offizielles Fusion-Programm öffnen",
+        timetable_blocked_note: "Eingebettetes Programm konnte nicht geladen werden. In neuem Tab öffnen.",
         camp_members_title: "Camp-Mitglieder",
         camp_members_total: "{count} Leute im Camp",
         camp_members_load_error: "Liste nicht erreichbar — zeige die letzte gespeicherte Version.",
@@ -6265,6 +6315,21 @@ The programme is carried by dozens of crews and bars from across Europe. Each ba
     (function() {
       const frame = document.getElementById('official-map-frame');
       const fallback = document.getElementById('sitemap-fallback');
+      if (!frame || !fallback) return;
+      let loaded = false;
+      frame.addEventListener('load', () => { loaded = true; });
+      setTimeout(() => {
+        if (!loaded) {
+          frame.hidden = true;
+          fallback.hidden = false;
+        }
+      }, 6000);
+    })();
+
+    // ===== Timetable — official iframe with same fallback pattern =====
+    (function() {
+      const frame = document.getElementById('official-timetable-frame');
+      const fallback = document.getElementById('timetable-fallback');
       if (!frame || !fallback) return;
       let loaded = false;
       frame.addEventListener('load', () => { loaded = true; });
